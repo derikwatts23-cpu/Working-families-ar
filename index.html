@@ -1,40 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WORKING FAMILIES ERG</title>
-  
-  <!-- Import a bold, beefy Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #1e1e1e; /* dark background for contrast */
-    }
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AR Business Card</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.1/aframe/build/aframe-ar.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+      .ar-text {
+        font-family: 'Bebas Neue', sans-serif;
+        color: #FF5733;
+        font-weight: bold;
+      }
+    </style>
+  </head>
 
-    .animated-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 3em;
-      color: #FF5733;
-      text-align: center;
-      animation: bounce 1s infinite;
-      letter-spacing: 2px; /* makes it look more bold and spacious */
-    }
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+      <!-- Marker: You can print this pattern on your card -->
+      <a-marker preset="hiro">
+        <!-- Animated 3D text above the marker -->
+        <a-text 
+          value="Join the WORKING FAMILIES ERG" 
+          color="#FF5733" 
+          font="https://cdn.aframe.io/fonts/mozillavr.fnt" 
+          position="0 0.5 0" 
+          rotation="-90 0 0" 
+          scale="2 2 2"
+          animation="property: position; dir: alternate; dur: 1000; to: 0 0.7 0; loop: true">
+        </a-text>
+      </a-marker>
 
-    @keyframes bounce {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <h1 class="animated-text">Join the WORKING FAMILIES ERG</h1>
-</body>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
